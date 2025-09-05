@@ -1,0 +1,24 @@
+{
+  "manifest_version": 3,
+  "name": "User Activity Logger",
+  "version": "1.0",
+  "description": "Monitor tab performance and memory usage",
+
+
+  "permissions": [
+    "tabs",
+    "activeTab",
+    "storage",
+    "processes",
+    "system.memory",
+    "idle",
+    "windows",
+    "scripting"
+  ],
+  "host_permissions": [
+    "<all_urls>"
+  ],
+  "background": {
+    "service_worker": "background.js"
+  }
+}

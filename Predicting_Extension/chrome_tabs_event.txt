@@ -1,0 +1,72 @@
+Chrome Tabs API Events Reference
+================================
+
+1. chrome.tabs.onActivated
+---------------------------
+Description: Fired when the active tab in a window changes.
+Callback Parameters:
+  - activeInfo (object) with:
+      • tabId: ID of the newly activated tab.
+      • windowId: ID of the window that contains the tab.
+Use Case: Track when users switch between tabs.
+
+2. chrome.tabs.onCreated
+---------------------------
+Description: Fired when a new tab is created.
+Callback Parameters:
+  - tab (object): Represents the newly created tab.
+Use Case: Log new tab creation events.
+
+3. chrome.tabs.onUpdated
+---------------------------
+Description: Fired when a tab is updated (e.g., URL change, title change, status updates).
+Callback Parameters:
+  - tabId (number): The ID of the updated tab.
+  - changeInfo (object): Contains details about what changed (e.g., url, title, status).
+  - tab (object): The updated tab object.
+Use Case: Monitor navigation changes or page load progress.
+
+4. chrome.tabs.onRemoved
+---------------------------
+Description: Fired when a tab is closed.
+Callback Parameters:
+  - tabId (number): The ID of the closed tab.
+  - removeInfo (object) with:
+      • windowId: The ID of the window the tab belonged to.
+      • isWindowClosing: Boolean indicating if the window is closing.
+Use Case: Log tab closures and clean up any associated data.
+
+5. chrome.tabs.onHighlighted
+---------------------------
+Description: Fired when the highlighted (selected) tabs in a window change.
+Callback Parameters:
+  - highlightInfo (object) with:
+      • windowId: The ID of the affected window.
+      • tabIds: An array of IDs for the tabs that are highlighted.
+Use Case: Track changes when multiple tabs are selected or when the active highlighted tabs change.
+
+6. chrome.tabs.onDetached
+---------------------------
+Description: Fired when a tab is detached from a window (e.g., dragged out to form a new window).
+Callback Parameters:
+  - tabId (number): The ID of the detached tab.
+  - detachInfo (object) with:
+      • oldWindowId: The ID of the window from which the tab was detached.
+Use Case: Monitor when tabs move between windows.
+
+7. chrome.tabs.onAttached
+---------------------------
+Description: Fired when a tab is attached to a window (e.g., when a detached tab is moved into a window).
+Callback Parameters:
+  - tabId (number): The ID of the attached tab.
+  - attachInfo (object) with:
+      • newWindowId: The ID of the window to which the tab was attached.
+Use Case: Log events where tabs are added to a window.
+
+8. chrome.tabs.onReplaced
+---------------------------
+Description: Fired when a tab is replaced by another tab. This may happen during prerendering or when a discarded tab is reloaded.
+Callback Parameters:
+  - addedTabId (number): The ID of the new tab that replaced the old one.
+  - removedTabId (number): The ID of the tab that was replaced.
+Use Case: Ensure continuity of tab-based sessions by tracking replacement events.
